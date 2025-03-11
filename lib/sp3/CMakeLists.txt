@@ -1,11 +1,23 @@
-add_library(three-space STATIC
+set(THREE_SPACE_HEADER_FILES
   vector.h
   point.h
   matrix.h
-  matrix.cpp
   rotation.h
   pose.h
   transform.h
 )
 
-target_include_directories(three-space PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/..)
+set(THREE_SPACE_SOURCE_FILES
+  matrix.cpp
+)
+
+add_library(three-space STATIC
+  ${THREE_SPACE_HEADER_FILES}
+  ${THREE_SPACE_SOURCE_FILES}
+)
+
+target_include_directories(three-space
+  PUBLIC
+    "$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/lib>"
+    "$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>"
+)

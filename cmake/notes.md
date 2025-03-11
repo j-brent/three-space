@@ -1,0 +1,5 @@
+- https://cmake.org/cmake/help/latest/guide/importing-exporting/index.html
+- https://cmake.org/cmake/help/latest/guide/importing-exporting/index.html#creating-relocatable-packages
+- https://cliutils.gitlab.io/modern-cmake/chapters/install.html
+- https://github.com/TheLartians/PackageProject.cmake/blob/master/CMakeLists.txt
+- https://github.com/cpm-cmake/CPM.cmake/wiki/Preparing-projects-for-CPM.cmake

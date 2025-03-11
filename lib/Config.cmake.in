@@ -1,0 +1,8 @@
+@PACKAGE_INIT@
+
+# include(CMakeFindDependencyMacro)
+# find_dependency(<dep> <version>)
+
+include("${CMAKE_CURRENT_LIST_DIR}/three-spaceTargets.cmake")
+
+check_required_components(three-space)
