@@ -12,5 +12,8 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 include(cmake/CPM.cmake)
 
 add_subdirectory(lib)
-CPMAddPackage("gh:catchorg/Catch2@3.8.0")
-add_subdirectory(tests)
+
+if (PROJECT_IS_TOP_LEVEL)
+  CPMAddPackage("gh:catchorg/Catch2@3.8.0")
+  add_subdirectory(tests)
+endif()
