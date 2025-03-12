@@ -12,7 +12,7 @@ namespace sp3
   public:
     transform() = default;
 
-    transform(vector t, rotation r, real scale)
+    transform(vector t, rotation r, real scale = 1)
     : m_matrix{detail::homogeneous_matrix::make(std::move(t), std::move(r), scale)}
     {}
 

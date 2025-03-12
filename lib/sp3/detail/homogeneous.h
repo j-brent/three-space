@@ -1,11 +1,11 @@
 #pragma once
 
-#include "matrix.h"
-#include "matrix_vector_functions.h"
-#include "point.h"
-#include "rotation.h"
-#include "vector.h"
-#include "vector_point_functions.h"
+#include "sp3/matrix.h"
+#include "sp3/matrix_vector_functions.h"
+#include "sp3/point.h"
+#include "sp3/rotation.h"
+#include "sp3/vector.h"
+#include "sp3/vector_point_functions.h"
 
 namespace sp3
 {
@@ -46,7 +46,7 @@ namespace sp3
         return H;
       }
 
-      point operator*(const point& p)
+      point operator*(const point& p) const
       {
         return as_point(m_mat33 * vector{p.x, p.y, p.z} + m_t);
       }

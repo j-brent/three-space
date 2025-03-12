@@ -16,6 +16,11 @@ namespace sp3
     auto operator<=>(const point&) const = default;
   };
 
+  inline point operator*(real s, const point& p)
+  {
+    return {s * p.x, s * p.y, s * p.z};
+  }
+
   inline std::ostream& operator<<(std::ostream& os, const point& p)
   {
     os << "("<< p.x << ", " << p.y << ", " << p.z << ")";
