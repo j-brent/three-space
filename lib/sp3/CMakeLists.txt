@@ -6,6 +6,7 @@ set(THREE_SPACE_HEADER_FILES
   pose.h
   transform.h
   angle.h
+  axes.h
   detail/homogeneous.h
 )
 

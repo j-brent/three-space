@@ -2,7 +2,10 @@
 
 #include "angle.h"
 #include "matrix.h"
+#include "matrix_vector_functions.h"
+#include "point.h"
 #include "vector.h"
+#include "vector_point_functions.h"
 
 #include <cmath>
 
@@ -32,6 +35,11 @@ namespace sp3
         {{uxy * (1-c) + u.z*s, uyy * (1-c) +     c, uyz * (1-c) - u.x*s}},
         {{uxz * (1-c) - u.y*s, uyz * (1-c) + u.x*s, uzz * (1-c) +     c}}
       }}};
+    }
+
+    point operator()(const point& p) const
+    {
+      return as_point(m_matrix * vector{p.x, p.y, p.z});
     }
 
     const sp3::matrix& matrix() const { return m_matrix; }

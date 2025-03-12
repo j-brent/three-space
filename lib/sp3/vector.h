@@ -3,6 +3,7 @@
 #include "real.h"
 
 #include <cmath>
+#include <ostream>
 
 namespace sp3
 {
@@ -13,6 +14,13 @@ namespace sp3
     real z = 0;
   };
   
+  inline std::ostream& operator<<(std::ostream& os, const vector& v)
+  {
+    os << "<"<< v.x << ", " << v.y << ", " << v.z << ">";
+    return os;
+  }
+
+
   inline bool operator==(const vector& lhs, const vector& rhs)
   {
     return (lhs.x == rhs.x) && (lhs.y == rhs.y) && (lhs.z == rhs.z); 

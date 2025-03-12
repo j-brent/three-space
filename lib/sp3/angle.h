@@ -3,6 +3,8 @@
 #include "real.h"
 
 #include <numbers>
+#include <ostream>
+#include <format>
 
 namespace sp3
 {
@@ -31,7 +33,7 @@ namespace sp3
     angle(angle&&) = default;
     angle& operator=(angle&&) = default;
   
-    explicit angle(real radians) : m_radians{radians} {}
+    constexpr explicit angle(real radians) : m_radians{radians} {}
 
     real rad() const { return m_radians; }
 
@@ -40,4 +42,11 @@ namespace sp3
   private:
     real m_radians = 0;
   };
+
+  inline std::ostream& operator<<(std::ostream& os, const angle& a)
+  {
+    // os << (a.rad() / sp3::pi) << "pi radians";
+    os << std::format("{:.2f} pi radians", a.rad() / sp3::pi);
+    return os;
+  }
 }
