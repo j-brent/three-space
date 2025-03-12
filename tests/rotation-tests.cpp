@@ -13,22 +13,20 @@ TEST_CASE("rotation - rotations around the x, y, and z axes")
 {
   SECTION("rotating points 90 degrees clockwise around the given axis")
   {
-    constexpr auto theta0 = sp3::angle{sp3::pi / 2};
-
     const auto& [axis, theta, input, expected] =
         GENERATE( table<sp3::vector, sp3::angle, sp3::point, sp3::point>(
         {
-          {sp3::xhat, theta0, sp3::point{1, 0, 0}, sp3::point{1, 0, 0}},
-          {sp3::xhat, theta0, sp3::point{0, 1, 0}, sp3::point{0, 0, 1}},
-          {sp3::xhat, theta0, sp3::point{0, 0, 1}, sp3::point{0, -1, 0}},
+          {sp3::xhat, sp3::angle{sp3::pi/2}, sp3::point{1, 0, 0}, sp3::point{1, 0, 0}},
+          {sp3::xhat, sp3::angle{sp3::pi/2}, sp3::point{0, 1, 0}, sp3::point{0, 0, 1}},
+          {sp3::xhat, sp3::angle{sp3::pi/2}, sp3::point{0, 0, 1}, sp3::point{0, -1, 0}},
     
-          {sp3::yhat, theta0, sp3::point{1, 0, 0}, sp3::point{0, 0, -1}},
-          {sp3::yhat, theta0, sp3::point{0, 1, 0}, sp3::point{0, 1, 0}},
-          {sp3::yhat, theta0, sp3::point{0, 0, 1}, sp3::point{1, 0, 0}},
+          {sp3::yhat, sp3::angle{sp3::pi/2}, sp3::point{1, 0, 0}, sp3::point{0, 0, -1}},
+          {sp3::yhat, sp3::angle{sp3::pi/2}, sp3::point{0, 1, 0}, sp3::point{0, 1, 0}},
+          {sp3::yhat, sp3::angle{sp3::pi/2}, sp3::point{0, 0, 1}, sp3::point{1, 0, 0}},
     
-          {sp3::zhat, theta0, sp3::point{1, 0, 0}, sp3::point{0, 1, 0}},
-          {sp3::zhat, theta0, sp3::point{0, 1, 0}, sp3::point{-1, 0, 0}},
-          {sp3::zhat, theta0, sp3::point{0, 0, 1}, sp3::point{0, 0, 1}},
+          {sp3::zhat, sp3::angle{sp3::pi/2}, sp3::point{1, 0, 0}, sp3::point{0, 1, 0}},
+          {sp3::zhat, sp3::angle{sp3::pi/2}, sp3::point{0, 1, 0}, sp3::point{-1, 0, 0}},
+          {sp3::zhat, sp3::angle{sp3::pi/2}, sp3::point{0, 0, 1}, sp3::point{0, 0, 1}},
         }));
 
     auto result = sp3::rotation{axis, theta}(input);
