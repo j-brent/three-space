@@ -27,14 +27,14 @@ namespace sp3
       const real s = std::sin(theta.rad());
       const real c = std::cos(theta.rad());
 
-      m_matrix = matrix{{{
+      m_matrix = sp3::matrix{{{
         {{uxx * (1-c) +     c, uxy * (1-c) - u.z*s, uxz * (1-c) + u.y*s}},
         {{uxy * (1-c) + u.z*s, uyy * (1-c) +     c, uyz * (1-c) - u.x*s}},
         {{uxz * (1-c) - u.y*s, uyz * (1-c) + u.x*s, uzz * (1-c) +     c}}
       }}};
     }
 
-    matrix& matrix() const { return m_matrix; }
+    const sp3::matrix& matrix() const { return m_matrix; }
 
     rotation operator*(const rotation& rhs) const
     {
@@ -47,8 +47,8 @@ namespace sp3
     }
 
   private:
-    rotation(matrix m) : m_matrix{std::move(m)} {}
+    rotation(sp3::matrix m) : m_matrix{std::move(m)} {}
 
-    matrix m_matrix = matrix::identity();
+    sp3::matrix m_matrix = matrix::identity();
   };
 }
