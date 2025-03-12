@@ -1,6 +1,7 @@
 find_package(Catch2 3 REQUIRED)
 
 add_executable(sp3-tests
+  angle-tests.cpp
   matrix-tests.cpp
   matrix-vector-functions-tests.cpp
   point-tests.cpp

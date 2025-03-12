@@ -48,6 +48,11 @@ namespace sp3
       return m_data[i][j];
     }
 
+    real& operator()(size_t i, size_t j)
+    {
+      return m_data[i][j];
+    }
+
     vector row(size_t i) const 
     {
       assert(i < NROWS);

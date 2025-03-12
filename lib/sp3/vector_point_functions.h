@@ -14,4 +14,9 @@ namespace sp3
   {
     return {b.x - a.x, b.y - a.y, b.z - a.z};
   }
+
+  inline point as_point(vector&& v)
+  {
+    return {std::move(v.x), std::move(v.y), std::move(v.z)};
+  }
 }

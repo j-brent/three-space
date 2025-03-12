@@ -5,6 +5,9 @@ set(THREE_SPACE_HEADER_FILES
   rotation.h
   pose.h
   transform.h
+  angle.h
+  axes.h
+  detail/homogeneous.h
 )
 
 set(THREE_SPACE_SOURCE_FILES

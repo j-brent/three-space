@@ -5,7 +5,7 @@
 
 namespace sp3
 {
-  vector operator*(const matrix& M, const vector& v)
+  inline vector operator*(const matrix& M, const vector& v)
   {
     return {dot(M.row(0), v), dot(M.row(1), v), dot(M.row(2), v)};
   }
