@@ -1,7 +1,10 @@
 #include <catch2/catch_test_macros.hpp>
 #include <catch2/matchers/catch_matchers_floating_point.hpp>
 
+#include "sp3/real.h"
 #include "sp3/vector.h"
+
+constexpr auto eps = std::numeric_limits<sp3::real>::epsilon();
 
 TEST_CASE("vector - default vector is the origin")
 {
@@ -113,5 +116,40 @@ TEST_CASE("vector - dot product and norm")
     
     const auto dot_norm = std::sqrt(dot(v, v));
     REQUIRE_THAT(sp3::norm(v), Catch::Matchers::WithinRel(dot_norm, eps));
+  }
+}
+
+TEST_CASE("vector - cross product")
+{
+  SECTION("canonincal basis vectors")
+  {
+    const auto i = sp3::vector{1, 0, 0};
+    const auto j = sp3::vector{0, 1, 0};
+    const auto k = sp3::vector{0, 0, 1};
+    
+    CHECK(sp3::cross(i, j) == k);
+    CHECK(sp3::cross(j, k) == i);
+    CHECK(sp3::cross(k, i) == j);
+    
+    CHECK(sp3::cross(j, i) == -k);
+    CHECK(sp3::cross(k, j) == -i);
+    CHECK(sp3::cross(i, k) == -j);
+  }
+
+  SECTION("non-zero, non-canonical vectors")
+  {
+    const auto a = sp3::vector{1, -2, 3};
+    const auto axa = sp3::cross(a, a);
+    
+    CHECK_THAT(axa.x, Catch::Matchers::WithinAbs(0, eps));
+    CHECK_THAT(axa.y, Catch::Matchers::WithinAbs(0, eps));
+    CHECK_THAT(axa.z, Catch::Matchers::WithinAbs(0, eps));
+    
+    const auto b = sp3::vector{4, -5, -6};
+    const auto axb = sp3::cross(a, b);
+    const auto bxa = sp3::cross(b, a);
+
+    CHECK(axb == sp3::vector{27, 18, 3});
+    CHECK(axb == -bxa);
   }
 }

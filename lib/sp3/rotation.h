@@ -54,6 +54,11 @@ namespace sp3
       return {transposed(m_matrix)};
     }
 
+    rotation operator-() const
+    {
+      return inverse();
+    }
+
   private:
     rotation(sp3::matrix m) : m_matrix{std::move(m)} {}
 

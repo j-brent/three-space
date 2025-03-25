@@ -65,4 +65,11 @@ namespace sp3
   {
     return {v.x / s, v.y / s, v.z / s};
   }
+
+  inline vector cross(const vector& a, const vector& b)
+  {
+    const auto [a1, a2, a3] = a;
+    const auto [b1, b2, b3] = b;
+    return{a2*b3 - a3*b2, a3*b1 - a1*b3, a1*b2 - a2*b1};
+  }
 }

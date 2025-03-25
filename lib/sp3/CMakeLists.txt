@@ -1,12 +1,15 @@
 set(THREE_SPACE_HEADER_FILES
-  vector.h
-  point.h
-  matrix.h
-  rotation.h
-  pose.h
-  transform.h
   angle.h
   axes.h
+  matrix_vector_functions.h
+  matrix.h
+  point.h
+  pose.h
+  real.h
+  rotation.h
+  transform.h
+  vector_point_functions.h
+  vector.h
   detail/homogeneous.h
 )
 
