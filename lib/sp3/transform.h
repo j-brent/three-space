@@ -21,6 +21,11 @@ namespace sp3
       return this->m_matrix * p;
     }
 
+    vector operator()(const vector& v) const
+    {
+      return this->m_matrix * v;
+    }
+
     transform operator*(const transform& rhs) const
     {
       return {this->m_matrix * rhs.m_matrix};
