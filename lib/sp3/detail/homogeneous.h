@@ -51,6 +51,11 @@ namespace sp3
         return as_point(m_mat33 * vector{p.x, p.y, p.z} + m_t);
       }
 
+      vector operator*(const vector& v) const
+      {
+        return m_mat33 * v;
+      }
+
       homogeneous_matrix operator*(const homogeneous_matrix& rhs) const
       {
         // [Rl tl] * [Rr tr] = [Rl*Rr  Rl*tr + tl]
