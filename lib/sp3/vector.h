@@ -3,6 +3,7 @@
 #include "real.h"
 
 #include <cmath>
+#include <limits>
 #include <ostream>
 
 namespace sp3
@@ -12,8 +13,29 @@ namespace sp3
     real x = 0;
     real y = 0;
     real z = 0;
+
+    friend vector& operator+=(vector& lhs, const vector& rhs)
+    {
+      lhs.x += rhs.x;
+      lhs.x += rhs.y;
+      lhs.y += rhs.z;
+
+      return lhs;
+    }
   };
+
+  inline float length(const vector& v)
+  {
+    return std::hypot(v.x, v.y, v.z);
+  }
   
+  inline vector normalize(const vector& v)
+  {
+    constexpr float eps = std::numeric_limits<float>::min(); // min: the smallest positive normal value
+    const float len = length(v);
+    return (len > eps) ? vector{v.x / len, v.y / len, v.z / len} : vector{0, 0, 0};
+  }
+
   inline std::ostream& operator<<(std::ostream& os, const vector& v)
   {
     os << "<"<< v.x << ", " << v.y << ", " << v.z << ">";

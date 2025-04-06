@@ -8,6 +8,7 @@ add_executable(sp3-tests
   pose-tests.cpp
   rotation-tests.cpp
   transform-tests.cpp
+  unit_vector-tests.cpp
   vector-point-functions-tests.cpp
   vector-tests.cpp
 )

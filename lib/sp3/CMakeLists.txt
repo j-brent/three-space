@@ -8,6 +8,7 @@ set(THREE_SPACE_HEADER_FILES
   real.h
   rotation.h
   transform.h
+  unit_vector.h
   vector_point_functions.h
   vector.h
   detail/homogeneous.h
